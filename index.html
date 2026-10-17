@@ -59,7 +59,7 @@
     .school-button:hover{color:var(--blue);text-decoration-color:var(--blue)}
     .city{color:var(--sub);font-size:12px}.type-small{color:var(--muted);font-size:11px;margin-top:5px}
     .chip{display:inline-block;font-size:11px;font-weight:800;padding:5px 9px;border-radius:7px;white-space:nowrap}
-    .chip.included{background:var(--yes-bg);color:var(--yes)} .chip.upcoming{background:#fff0df;color:#9b4c16} .chip.excluded{background:var(--no-bg);color:var(--no)}
+    .chip.included{background:var(--yes-bg);color:var(--yes)} .chip.upcoming{background:#fff0df;color:#9b4c16} .chip.eligible{background:#ddf3e8;color:#16724d} .chip.excluded{background:#eef4f1;color:#526b61}
     .chip.review{background:var(--maybe-bg);color:var(--maybe)} .chip.error{background:var(--err-bg);color:var(--err)}
     .reason{font-size:11px;color:var(--sub);max-width:340px;line-height:1.5}
     .empty{padding:75px 20px;text-align:center}.empty-icon{width:60px;height:60px;display:grid;place-items:center;margin:0 auto 18px;background:#f1f5fb;border-radius:20px;color:#91a1b7}
@@ -142,17 +142,17 @@
   <div class="kpis">
     <section class="surface kpi"><div class="kpi-head">조회된 학교 <span class="kpi-icon">▤</span></div><div class="kpi-value" id="k-total">—</div><div class="kpi-note">경북 고등학교 전체</div></section>
     <section class="surface kpi"><div class="kpi-head">해커톤 참여 어려움 <span class="kpi-icon">◉</span></div><div class="kpi-value" id="k-included">—</div><div class="kpi-note">시험기간 겹침 또는 12/14~18 시험</div></section>
-    <section class="surface kpi"><div class="kpi-head">시험 충돌 미확인 <span class="kpi-icon">✓</span></div><div class="kpi-value" id="k-excluded">—</div><div class="kpi-note">등록 일정상 임박한 시험 확인 안 됨</div></section>
+    <section class="surface kpi"><div class="kpi-head">잠정 참여 가능 <span class="kpi-icon">✓</span></div><div class="kpi-value" id="k-excluded">—</div><div class="kpi-note">시험 종료 확인 또는 충돌 근거 없음</div></section>
     <section class="surface kpi"><div class="kpi-head">추가 확인 필요 <span class="kpi-icon">!</span></div><div class="kpi-value" id="k-review">—</div><div class="kpi-note">불명확한 일정 및 조회 실패 포함</div></section>
   </div>
   <section class="surface info-strip"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg>
-    <p><strong>해커톤 참가 여건 판정</strong> · 12월 12~13일이 같은 학년의 시험기간에 들어가면 <strong>‘시험기간 겹침’</strong>, 행사 직후 12월 14~18일에 2차 정기고사가 확인되면 <strong>‘시험 직전’</strong>으로 구분합니다. 두 경우 모두 해커톤 참여가 어려울 수 있습니다. 12월 11일 전에 시험이 끝나고 행사 직후 시험도 확인되지 않으면 ‘시험 충돌 미확인’으로 표시합니다. 불명확한 일정은 ‘확인 필요’로 분류하며, 참가 가능 여부는 학교에 최종 확인해야 합니다.</p></section>
+    <p><strong>해커톤 참가 여건 판정</strong> · 12월 12~13일이 같은 학년의 시험기간에 들어가면 <strong>‘시험기간 겹침’</strong>, 행사 직후 12월 14~18일에 2차 정기고사가 확인되면 <strong>‘시험 직전’</strong>으로 구분합니다. 두 경우 모두 해커톤 참여가 어려울 수 있습니다. 12월 11일까지 해당 학년의 시험 종료가 확인되고 행사 직후 시험이 없다면 <strong>‘참여 가능’</strong>으로 표시합니다. 시험 일정에 충돌 근거가 없지만 종료일이 확인되지 않은 경우는 ‘시험 충돌 미확인’으로 구분합니다. 불명확한 일정은 ‘확인 필요’로 분류하며, 참가 가능 여부는 학교에 최종 확인해야 합니다.</p></section>
   <section class="surface main-panel">
     <div class="panel-head"><div class="panel-topline"><div><h2>학교별 분석 결과</h2><p class="subhead">학교명을 선택하면 학년별 판정 근거와 원본 학사일정을 확인할 수 있습니다.</p></div><span class="updated" id="updated"></span></div>
       <div class="filters"><label class="search-box"><span aria-hidden="true">⌕</span><input id="q" placeholder="학교명 또는 시·군 검색" autocomplete="off" aria-label="학교명 또는 지역 검색"></label>
         <select id="city-filter" aria-label="지역 필터"><option value="">전체 지역</option></select>
         <select id="grade-filter" aria-label="학년 필터"><option value="all">1·2학년 통합</option><option value="1">1학년</option><option value="2">2학년</option></select>
-        <select id="status-filter" aria-label="판정 필터"><option value="all">전체 판정</option><option value="included">시험기간 겹침</option><option value="upcoming">시험 직전(12/14~18)</option><option value="excluded">시험 충돌 미확인</option><option value="review">확인 필요</option><option value="error">조회 실패</option></select>
+        <select id="status-filter" aria-label="판정 필터"><option value="all">전체 판정</option><option value="included">시험기간 겹침</option><option value="upcoming">시험 직전(12/14~18)</option><option value="eligible">참여 가능(시험 종료)</option><option value="excluded">시험 충돌 미확인</option><option value="review">확인 필요</option><option value="error">조회 실패</option></select>
       </div></div>
     <div class="table-scroll"><table><thead><tr><th>학교명</th><th>지역</th><th>1학년</th><th>2학년</th><th>종합 판정</th><th>판정 근거</th></tr></thead><tbody id="tbody"></tbody></table></div>
     <div class="empty" id="empty"><div class="empty-icon">▦</div><b>아직 조회된 학교가 없습니다.</b><p>상단의 ‘전체 학교 분석 시작’을 눌러<br>나이스 교육정보를 불러와 주세요.</p></div>
@@ -175,7 +175,7 @@ const SCAN_FROM = '20261124', SCAN_TO = '20261223';
 const EVENT_START = '20261212', EVENT_END = '20261213';
 const IMMINENT_START = '20261214', IMMINENT_END = '20261218'; // 행사 직후 시험 주간
 const BASE_URL = 'https://open.neis.go.kr/hub/';
-const LABELS = {included:'시험기간 겹침', upcoming:'시험 직전', excluded:'시험 충돌 미확인', review:'확인 필요', error:'조회 실패'};
+const LABELS = {included:'시험기간 겹침', upcoming:'시험 직전', eligible:'참여 가능', excluded:'시험 충돌 미확인', review:'확인 필요', error:'조회 실패'};
 const state = {rows:[], grade:'all', filter:'all', city:'', q:'', page:1, total:0,
   completed:0, phase:'idle', active:null, updated:null, message:'전체 학교 분석 시작을 눌러 조회하세요.'};
 const $ = s => document.querySelector(s);
@@ -203,7 +203,7 @@ function renderStats() {
   const n=state.rows.length;
   $('#k-total').textContent=state.total ? `${n.toLocaleString()} / ${state.total.toLocaleString()}` : (n?String(n):'—');
   $('#k-included').textContent=n?(counts('included')+counts('upcoming')).toLocaleString():'—';
-  $('#k-excluded').textContent=n?counts('excluded').toLocaleString():'—';
+  $('#k-excluded').textContent=n?(counts('eligible')+counts('excluded')).toLocaleString():'—';
   $('#k-review').textContent=n?(counts('review')+counts('error')).toLocaleString():'—';
 }
 function populateCities() {
@@ -218,13 +218,13 @@ function renderTable(){
     return (!q||(row.name+' '+row.city+' '+row.address).toLocaleLowerCase('ko').includes(q))
       &&(!state.city||row.city===state.city)&&(state.filter==='all'||viewStatus(row)===state.filter);
   });
-  const order={included:0,upcoming:1,review:2,error:3,excluded:4};
+  const order={included:0,upcoming:1,review:2,error:3,eligible:4,excluded:5};
   rows.sort((a,b)=>(order[viewStatus(a)]??4)-(order[viewStatus(b)]??4)||a.name.localeCompare(b.name,'ko'));
   const pages=Math.max(1,Math.ceil(rows.length/30));state.page=Math.max(1,Math.min(state.page,pages));
   const from=(state.page-1)*30, visible=rows.slice(from,from+30);
   $('#tbody').innerHTML=visible.map(row=>{
     const r1=row.grades?.['1'],r2=row.grades?.['2'];
-    const priority=['included','upcoming','review','error','excluded'];
+    const priority=['included','upcoming','review','error','eligible','excluded'];
     const reason=state.grade==='all'?(priority.map(st=>[r1,r2].find(g=>g?.status===st)).find(Boolean)?.reason):row.grades?.[state.grade]?.reason;
     return `<tr><td data-label="학교명"><button class="school-button" data-code="${escapeHtml(row.code)}">${escapeHtml(row.name)}</button><div class="type-small">${escapeHtml(row.type)}</div></td>
       <td class="city" data-label="지역">${escapeHtml(row.city||'—')}</td><td data-label="1학년">${badge(r1?.status)}</td><td data-label="2학년">${badge(r2?.status)}</td>
@@ -357,13 +357,13 @@ function gradeAssessment(schedule,g){
   if(missingNear.length)return {status:'review',reason:'시험 관련 행사의 학년별 해당 여부가 미기재됨',evidence:missingNear.slice(0,5).map(x=>x.ev)};
   const ambiguousNear=ambiguous.filter(e=>near(e,7));
   if(ambiguousNear.length)return {status:'review',reason:'시험 관련 행사이나 2차 정기고사 여부가 불명확함',evidence:ambiguousNear.slice(0,5).map(x=>x.ev)};
-  // 주말 전에 끝난 것으로 확인된 시험은 '미포함'입니다.
+  // 주말 전에 종료된 2차 정기고사는 다른 시험 충돌이 없다면 해커톤 '참여 가능'으로 분류합니다.
   if(before.length&&!after.length){
-    if(completed.length)return {status:'excluded',reason:`명시된 2차 정기고사 기간이 행사 전에 종료 (${fmtDate(completed[0].end)} 종료)`,evidence:[completed[0].entry.ev]};
-    if(markedEnded.length)return {status:'excluded',reason:`2차 정기고사 종료 일정이 행사 전에 등록됨 (${fmtDate(markedEnded[0].date)})`,evidence:[markedEnded[0].ev]};
+    if(completed.length)return {status:'eligible',reason:`참여 가능(시험일정 기준) · 2차 정기고사가 ${fmtDate(completed[0].end)}에 종료되어 행사(12/12~13) 전 마무리됨`,evidence:[completed[0].entry.ev]};
+    if(markedEnded.length)return {status:'eligible',reason:`참여 가능(시험일정 기준) · 2차 정기고사 종료 기록 ${fmtDate(markedEnded[0].date)} 확인`,evidence:[markedEnded[0].ev]};
     // 종료일 문구는 없더라도 복수 시험일이 모두 11일 이전이며 이후 시험이 없다면 등록 일정상 종료로 판단합니다.
     if(new Set(before.map(x=>x.date)).size>=2){
-      return {status:'excluded',reason:`등록된 2차 정기고사가 ${fmtDate(before[0].date)}까지이고 12월 14일 이후에는 시험 일정 없음 (등록 자료 기준)`,evidence:before.slice(0,3).map(x=>x.ev)};
+      return {status:'eligible',reason:`참여 가능(잠정) · 등록된 2차 정기고사는 ${fmtDate(before[0].date)}까지이며 행사 직후 시험 기록 없음 (종료일 학교 확인 권장)`,evidence:before.slice(0,3).map(x=>x.ev)};
     }
   }
   // 같은 기준으로 시험이 주말 이후 시작한 것이 명확하면 '미포함'입니다.
@@ -381,7 +381,7 @@ function gradeAssessment(schedule,g){
 }
 function assessSchool(school,schedule){
   const g1=gradeAssessment(schedule,1),g2=gradeAssessment(schedule,2);
-  const statuses=[g1.status,g2.status],status=statuses.includes('included')?'included':statuses.includes('upcoming')?'upcoming':statuses.includes('review')?'review':'excluded';
+  const statuses=[g1.status,g2.status],status=statuses.includes('included')?'included':statuses.includes('upcoming')?'upcoming':statuses.includes('review')?'review':statuses.includes('eligible')?'eligible':'excluded';
   const address=school.ORG_RDNMA||school.ORG_RDNDA||'',city=(address.match(/경상북도\s+(\S+)/)||[])[1]||'';
   return {code:school.SD_SCHUL_CODE,name:school.SCHUL_NM||'',city,address,
     type:school.HS_SC_NM||'',website:school.HMPG_ADRES||'',grades:{'1':g1,'2':g2},status,
@@ -482,7 +482,7 @@ async function runScan(){
     state.rows.sort((a,b)=>a.name.localeCompare(b.name,'ko'));
     const errors=counts('error');state.phase='complete';
     state.message=`조회 완료 · ${state.total}개교 / 조회 실패 ${errors}개교`;
-    if(errors){setError(`${errors}개 학교 학사일정 조회에 실패했습니다. 학교 이름을 클릭하면 오류를 볼 수 있습니다. 실패 학교는 ‘미포함’으로 취급하지 않습니다.`);}
+    if(errors){setError(`${errors}개 학교 학사일정 조회에 실패했습니다. 학교 이름을 클릭하면 오류를 볼 수 있습니다. 실패 학교는 ‘참여 가능’으로 취급하지 않습니다.`);}
   }catch(err){
     state.phase='failed';state.message='조회에 실패했습니다.';
     const message=String(err.message||err).replaceAll(NEIS_API_KEY,'[인증키 비공개]');
